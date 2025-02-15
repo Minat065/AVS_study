@@ -4,7 +4,7 @@ from flask import Flask
 from app.views.user_views import users_bp
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-
+from app.models import db
 
 def create_app(test_config=None):
     # create and configure the app
@@ -27,11 +27,14 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    app.register_blueprint(users_bp)
-
-  
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-    db = SQLAlchemy(app)
+
+    app.register_blueprint(users_bp)
+  
+  
     migrate = Migrate(app, db)
+    db.init_app(app)
+    migrate.init_app(app, db)
+    
 
     return app

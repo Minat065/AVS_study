@@ -2,7 +2,7 @@
 
 {% block body %}
   <h2>Add User</h2>
-  <form action="" method="post">
+  <form action="{{url_for('users.create_user')}}" method="post">
     <dl>
       <dt>Name:
       <dd><input type=text size=20 name=name placeholder=username>
