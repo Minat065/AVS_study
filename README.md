@@ -7,10 +7,10 @@
 ### endpointの実装
 - flaskの開発環境を一から構築
 - GET /users
-  - user全員の情報をhtml返す
-- GET /signup
+  - user全員の情報を表示するhtml返す
+- GET /users/create
   - signupのhtmlを返す
-- POST /signup
+- POST /users/create
   - 新規ユーザーを作成する
   - リクエストボディにユーザーデータを含める
   - 成功した場合、`/users`にリダイレクト
